@@ -1,0 +1,35 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ compila il file attivo",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "*.cpp",
+                "-m64",
+                "-g", 
+                "-Wall",
+                "-I${workspaceFolder}/include",
+                "-o",
+                "${workspaceFolder}/bin/${fileBasenameNoExtension}",
+                "-lSDL2main",
+                "-lSDL2",
+                "-lSDL2_image"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Attività generata dal debugger."
+        }
+    ],
+    "version": "2.0.0"
+}
