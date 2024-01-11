@@ -4,6 +4,8 @@
 
 #include "RenderWindow.hpp"
 
+#define N_FRUIT 9
+
 int main(int argc, char* argv[])
 {
     // Initialize SDL
@@ -15,7 +17,7 @@ int main(int argc, char* argv[])
 		std::cout << "IMG_init has failed. Error: " << SDL_GetError() << std::endl;
 
     // make a window
-	RenderWindow window("Melon Maker", 1280, 720);
+	RenderWindow window("Melon Maker", 800, 800);
 
     // make the game loop
 	bool gameRunning = true; // manage game loop
@@ -28,8 +30,11 @@ int main(int argc, char* argv[])
 			if (event.type == SDL_QUIT)
 				gameRunning = false;
 		}
+		window.clear();
+		window.display();
 	}
 
+	// close window
 	window.cleanUp();
 	SDL_Quit();
 
