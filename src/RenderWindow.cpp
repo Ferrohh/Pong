@@ -1,15 +1,10 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <iostream>
-
 #include "RenderWindow.hpp"
-#include "Entity.hpp"
 
 RenderWindow::RenderWindow(const char* p_title, int p_w, int p_h)
 	:window(NULL), renderer(NULL)
 {
     // make a window
-	window = SDL_CreateWindow(p_title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, p_w, p_h, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow(p_title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, p_w, p_h, SDL_WINDOW_ALLOW_HIGHDPI);
 
     // return error in case of failing
 	if (window == NULL)
@@ -55,12 +50,16 @@ void RenderWindow::render(Entity& p_entity)
 	src.h = p_entity.getCurrentFrame().h;
 
 	SDL_Rect dst;
-	dst.x = p_entity.getX() * 4;
-	dst.y = p_entity.getY() * 4;
-	dst.w = p_entity.getCurrentFrame().w * 4;
-	dst.h = p_entity.getCurrentFrame().h * 4;
+	dst.x = p_entity.getPos().x;
+	dst.y = p_entity.getPos().y;
+	dst.w = p_entity.getCurrentFrame().w;
+	dst.h = p_entity.getCurrentFrame().h;
 
 	SDL_RenderCopy(renderer, p_entity.getTex(), &src, &dst);
+}
+
+void RenderWindow::render(SDL_Texture* bg) {
+	SDL_RenderCopy(renderer, bg, NULL, NULL);
 }
 
 void RenderWindow::display()
