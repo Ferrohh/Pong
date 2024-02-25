@@ -58,6 +58,24 @@ void RenderWindow::render(Entity& p_entity)
 	SDL_RenderCopy(renderer, p_entity.getTex(), &src, &dst);
 }
 
+// void RenderWindow::render(Text& p_text)
+// {
+// 	SDL_Rect dst;
+// 	dst.x = p_text.getPos().x;
+// 	dst.y = p_text.getPos().y;
+// 	dst.w = p_text.getCurrentFrame().w;
+// 	dst.h = p_text.getCurrentFrame().h;
+
+// 	SDL_Texture* message = SDL_CreateTextureFromSurface(renderer, p_text.get_message());
+
+// 	// if(p_text.canFreeSurf()) {
+// 	// 	p_text.freeSurf();
+// 	// 	p_text.editFreeSurf(false);
+// 	// }
+
+// 	SDL_RenderCopy(renderer, message, NULL, &dst);
+// }
+
 void RenderWindow::render(SDL_Texture* bg) {
 	SDL_RenderCopy(renderer, bg, NULL, NULL);
 }

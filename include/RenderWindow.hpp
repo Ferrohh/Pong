@@ -5,6 +5,7 @@
 #include "Entity.hpp"
 #include "Ball.hpp"
 #include "Player.hpp"
+// #include "Text.hpp"
 
 #define WIDTH 800
 #define HEIGHT 500
@@ -17,6 +18,7 @@ public:
 	void cleanUp();
 	void clear();
 	void render(Entity& p_entity);
+	// void render(Text& p_text);
 	void render(SDL_Texture* bg);
 	void display();
 private:

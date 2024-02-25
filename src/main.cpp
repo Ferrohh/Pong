@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -17,6 +18,9 @@ int main(int argc, char* argv[])
     // initialize SDL image
 	if (!(IMG_Init(IMG_INIT_PNG)))
 		std::cout << "IMG_init has failed. Error: " << SDL_GetError() << std::endl;
+	
+	if (TTF_Init())
+		std::cout << "TTF_Init has failed. Error: " << SDL_GetError() << std::endl;
 
     // make a window
 	RenderWindow window("Melon Maker", WIDTH, HEIGHT);
@@ -38,6 +42,10 @@ int main(int argc, char* argv[])
 		Player(Vector2f(WIDTH - WIDTH/50 - 8, HEIGHT/2 - 96), player_texture, 8, 96)
 	};
 
+	// TTF_Font* sans = TTF_OpenFont("../res/fonts/sans.ttf", 24);
+
+	// Text points = Text(Vector2f(WIDTH/2 - 50, 10), sans, 100, 100, "0 - 0");
+
 	Player* player = &players[0];
 	Player* enemy = &players[1];
 
@@ -58,12 +66,14 @@ int main(int argc, char* argv[])
 						player->moveDown();
 						break;
 					case SDLK_DOWN:
+					case SDLK_k:
 						enemy->moveDown();
 						break;
 					case SDLK_w:
 						player->moveUp();
 						break;
 					case SDLK_UP:
+					case SDLK_i:
 						enemy->moveUp();
 						break;
 				}
@@ -77,6 +87,7 @@ int main(int argc, char* argv[])
 		for(Player a : players) {
 			window.render(a);
 		}
+		// window.render(points);
 		window.display();
 	}
 

@@ -6,7 +6,8 @@
 class Entity
 {
 public:
-	explicit Entity(Vector2f p_pos, SDL_Texture* p_tex, int p_w, int p_h);
+	Entity(Vector2f p_pos, SDL_Texture* p_tex, int p_w, int p_h);
+	Entity(Vector2f p_pos, int p_w, int p_h);
 	Vector2f& getPos();
 	SDL_Texture* getTex();
 	SDL_Rect getCurrentFrame();
